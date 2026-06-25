@@ -1,0 +1,25 @@
+# Generated reports
+*.html
+
+# Cache files
+.iv_cache.json
+.oi_cache.json
+
+# Personal data
+watchlist_*.csv
+
+# Mac
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Claude memory
+.claude/
+
+# Other projects (not part of this tool)
+azure-upload/
+batch-reg-react/
+batch-registration/
