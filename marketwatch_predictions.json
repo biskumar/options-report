@@ -1,0 +1,10 @@
+{
+  "description": "MarketWatch.com daily predictions log",
+  "predictions": [
+    {
+      "date": "2026-06-26",
+      "NASDAQ": "Bearish",
+      "DOW": "Bullish"
+    }
+  ]
+}
