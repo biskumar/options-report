@@ -5,8 +5,8 @@
       "date": "2026-07-01",
       "NASDAQ": "Bearish",
       "DOW": "Bearish",
-      "NASDAQ_correct": null,
-      "DOW_correct": null
+      "NASDAQ_correct": true,
+      "DOW_correct": true
     },
     {
       "date": "2026-06-30",
