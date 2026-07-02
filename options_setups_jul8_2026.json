@@ -1,0 +1,228 @@
+{
+  "description": "US Watchlist Options Setup Table — Expiry Jul 8–10, 2026",
+  "generated_date": "2026-07-02",
+  "setups": [
+    {
+      "stock": "GOOGL", "price": 361.21, "change_pct": 1.01, "expiry": "2026-07-06",
+      "bias": "Bullish", "pcr": 0.86, "call_wall": 360.0, "put_wall": 350.0, "hv20": 34.3,
+      "play": "Call $362", "entry": "> $361.50", "target": "$365–$368", "stop": "< $358",
+      "prediction_correct": null
+    },
+    {
+      "stock": "AMZN", "price": 241.70, "change_pct": 1.00, "expiry": "2026-07-06",
+      "bias": "Bullish", "pcr": 0.50, "call_wall": 240.0, "put_wall": 255.0, "hv20": 37.2,
+      "play": "Call $243", "entry": "> $242", "target": "$246–$250", "stop": "< $239",
+      "prediction_correct": null
+    },
+    {
+      "stock": "ORCL", "price": 142.50, "change_pct": -2.98, "expiry": "2026-07-10",
+      "bias": "Bearish", "pcr": 0.39, "call_wall": 160.0, "put_wall": 140.0, "hv20": 54.2,
+      "play": "Put $142", "entry": "< $142.50", "target": "$140–$138", "stop": "> $145",
+      "prediction_correct": null
+    },
+    {
+      "stock": "TSLA", "price": 425.30, "change_pct": 2.24, "expiry": "2026-07-06",
+      "bias": "Bullish", "pcr": 0.82, "call_wall": 435.0, "put_wall": 420.0, "hv20": 54.7,
+      "play": "Call $428", "entry": "> $426", "target": "$432–$435", "stop": "< $420",
+      "prediction_correct": null
+    },
+    {
+      "stock": "MSFT", "price": 384.28, "change_pct": 2.32, "expiry": "2026-07-06",
+      "bias": "Bullish", "pcr": 0.19, "call_wall": 390.0, "put_wall": 350.0, "hv20": 38.1,
+      "play": "Call $386", "entry": "> $385", "target": "$389–$390", "stop": "< $381",
+      "prediction_correct": null
+    },
+    {
+      "stock": "META", "price": 612.91, "change_pct": 9.14, "expiry": "2026-07-06",
+      "bias": "Bullish", "pcr": 0.41, "call_wall": 620.0, "put_wall": 580.0, "hv20": 50.9,
+      "play": "Call $615", "entry": "> $613", "target": "$619–$622", "stop": "< $607",
+      "prediction_correct": null
+    },
+    {
+      "stock": "AVGO", "price": 369.34, "change_pct": -2.38, "expiry": "2026-07-06",
+      "bias": "Bearish", "pcr": 0.70, "call_wall": 380.0, "put_wall": 350.0, "hv20": 70.1,
+      "play": "Put $368", "entry": "< $369", "target": "$363–$360", "stop": "> $375",
+      "prediction_correct": null
+    },
+    {
+      "stock": "PLTR", "price": 125.73, "change_pct": 7.15, "expiry": "2026-07-10",
+      "bias": "Bullish", "pcr": 0.35, "call_wall": 130.0, "put_wall": 115.0, "hv20": 60.2,
+      "play": "Call $127", "entry": "> $126", "target": "$129–$130", "stop": "< $123",
+      "prediction_correct": null
+    },
+    {
+      "stock": "QCOM", "price": 181.92, "change_pct": -2.17, "expiry": "2026-07-10",
+      "bias": "Bearish", "pcr": 0.21, "call_wall": 200.0, "put_wall": 185.0, "hv20": 78.4,
+      "play": "Put $181", "entry": "< $182", "target": "$178–$176", "stop": "> $186",
+      "prediction_correct": null
+    },
+    {
+      "stock": "AAPL", "price": 294.38, "change_pct": 1.86, "expiry": "2026-07-06",
+      "bias": "Bullish", "pcr": 0.28, "call_wall": 295.0, "put_wall": 290.0, "hv20": 33.8,
+      "play": "Call $295", "entry": "> $294.50", "target": "$298–$300", "stop": "< $291",
+      "prediction_correct": null
+    },
+    {
+      "stock": "NVDA", "price": 197.58, "change_pct": -0.98, "expiry": "2026-07-06",
+      "bias": "Bullish", "pcr": 0.49, "call_wall": 200.0, "put_wall": 195.0, "hv20": 41.4,
+      "play": "Call $199", "entry": "> $198", "target": "$201–$203", "stop": "< $195",
+      "prediction_correct": null
+    },
+    {
+      "stock": "AMD", "price": 540.88, "change_pct": -6.67, "expiry": "2026-07-10",
+      "bias": "Bearish", "pcr": 1.61, "call_wall": 600.0, "put_wall": 55.0, "hv20": 86.6,
+      "play": "Put $538", "entry": "< $540", "target": "$533–$530", "stop": "> $548",
+      "prediction_correct": null
+    },
+    {
+      "stock": "MSTR", "price": 93.39, "change_pct": 8.13, "expiry": "2026-07-10",
+      "bias": "Bullish", "pcr": 0.46, "call_wall": 101.0, "put_wall": 50.0, "hv20": 97.5,
+      "play": "Call $95", "entry": "> $94", "target": "$99–$101", "stop": "< $90",
+      "prediction_correct": null
+    },
+    {
+      "stock": "COIN", "price": 159.24, "change_pct": 9.44, "expiry": "2026-07-10",
+      "bias": "Bullish", "pcr": 0.50, "call_wall": 175.0, "put_wall": 170.0, "hv20": 70.2,
+      "play": "Call $161", "entry": "> $160", "target": "$165–$168", "stop": "< $156",
+      "prediction_correct": null
+    },
+    {
+      "stock": "HOOD", "price": 108.65, "change_pct": 8.32, "expiry": "2026-07-10",
+      "bias": "Bullish", "pcr": 0.37, "call_wall": 111.0, "put_wall": 101.0, "hv20": 74.9,
+      "play": "Call $110", "entry": "> $109", "target": "$112–$115", "stop": "< $106",
+      "prediction_correct": null
+    },
+    {
+      "stock": "MARA", "price": 13.37, "change_pct": -3.12, "expiry": "2026-07-10",
+      "bias": "Bearish", "pcr": 0.14, "call_wall": 15.0, "put_wall": 12.0, "hv20": 80.1,
+      "play": "Put $13", "entry": "< $13.30", "target": "$12.50–$12", "stop": "> $14",
+      "prediction_correct": null
+    },
+    {
+      "stock": "BABA", "price": 97.99, "change_pct": 1.82, "expiry": "2026-07-10",
+      "bias": "Bullish", "pcr": 0.26, "call_wall": 100.0, "put_wall": 92.0, "hv20": 27.5,
+      "play": "Call $99", "entry": "> $98.50", "target": "$101–$103", "stop": "< $96",
+      "prediction_correct": null
+    },
+    {
+      "stock": "SMCI", "price": 27.65, "change_pct": -5.89, "expiry": "2026-07-10",
+      "bias": "Bearish", "pcr": 0.25, "call_wall": 30.0, "put_wall": 25.0, "hv20": 151.4,
+      "play": "Put $27", "entry": "< $27.50", "target": "$25.50–$25", "stop": "> $29",
+      "prediction_correct": null
+    },
+    {
+      "stock": "PLUG", "price": 2.64, "change_pct": -3.65, "expiry": "2026-07-10",
+      "bias": "Neutral", "pcr": 0.18, "call_wall": 3.0, "put_wall": 2.5, "hv20": 68.2,
+      "play": "Put $2.50", "entry": "< $2.60", "target": "$2.30–$2.20", "stop": "> $2.80",
+      "prediction_correct": null
+    },
+    {
+      "stock": "NFLX", "price": 74.19, "change_pct": 3.33, "expiry": "2026-07-10",
+      "bias": "Bullish", "pcr": 0.28, "call_wall": 80.0, "put_wall": 68.0, "hv20": 36.6,
+      "play": "Call $75", "entry": "> $74.50", "target": "$78–$80", "stop": "< $72",
+      "prediction_correct": null
+    },
+    {
+      "stock": "NIO", "price": 4.97, "change_pct": -2.20, "expiry": "2026-07-10",
+      "bias": "Bullish", "pcr": 0.14, "call_wall": 5.5, "put_wall": 5.0, "hv20": 38.5,
+      "play": "Call $5", "entry": "> $4.98", "target": "$5.20–$5.50", "stop": "< $4.75",
+      "prediction_correct": null
+    },
+    {
+      "stock": "MU", "price": 1032.28, "change_pct": -10.73, "expiry": "2026-07-10",
+      "bias": "Bearish", "pcr": 2.10, "call_wall": 1200.0, "put_wall": 600.0, "hv20": 130.8,
+      "play": "Put $1025", "entry": "< $1030", "target": "$1000–$990", "stop": "> $1060",
+      "prediction_correct": null
+    },
+    {
+      "stock": "F", "price": 13.64, "change_pct": -1.59, "expiry": "2026-07-10",
+      "bias": "Bearish", "pcr": 0.74, "call_wall": 14.0, "put_wall": 13.5, "hv20": 28.4,
+      "play": "Put $13.50", "entry": "< $13.60", "target": "$13–$12.50", "stop": "> $14",
+      "prediction_correct": null
+    },
+    {
+      "stock": "NTAP", "price": 156.38, "change_pct": 2.20, "expiry": "2026-07-17",
+      "bias": "Bullish", "pcr": 0.53, "call_wall": 165.0, "put_wall": 150.0, "hv20": 36.9,
+      "play": "Call $158", "entry": "> $157", "target": "$161–$163", "stop": "< $154",
+      "prediction_correct": null
+    },
+    {
+      "stock": "BAC", "price": 58.36, "change_pct": 2.37, "expiry": "2026-07-10",
+      "bias": "Bullish", "pcr": 0.71, "call_wall": 58.0, "put_wall": 56.0, "hv20": 19.1,
+      "play": "Call $58.50", "entry": "> $58.40", "target": "$59.50–$60", "stop": "< $57.50",
+      "prediction_correct": null
+    },
+    {
+      "stock": "CSCO", "price": 117.01, "change_pct": -0.23, "expiry": "2026-07-10",
+      "bias": "Bullish", "pcr": 1.43, "call_wall": 120.0, "put_wall": 112.0, "hv20": 38.1,
+      "play": "Call $118", "entry": "> $117.50", "target": "$120–$121", "stop": "< $115",
+      "prediction_correct": null
+    },
+    {
+      "stock": "LCID", "price": 6.63, "change_pct": 0.76, "expiry": "2026-07-10",
+      "bias": "Neutral", "pcr": 0.95, "call_wall": 7.5, "put_wall": 6.5, "hv20": 94.6,
+      "play": "Call $6.50", "entry": "> $6.65", "target": "$7–$7.50", "stop": "< $6.20",
+      "prediction_correct": null
+    },
+    {
+      "stock": "GM", "price": 75.52, "change_pct": -1.92, "expiry": "2026-07-10",
+      "bias": "Bearish", "pcr": 0.58, "call_wall": 75.0, "put_wall": 77.0, "hv20": 30.9,
+      "play": "Put $75", "entry": "< $75.30", "target": "$73–$72", "stop": "> $77",
+      "prediction_correct": null
+    },
+    {
+      "stock": "HPE", "price": 43.95, "change_pct": -2.55, "expiry": "2026-07-10",
+      "bias": "Bearish", "pcr": 1.17, "call_wall": 45.0, "put_wall": 35.0, "hv20": 51.2,
+      "play": "Put $43.50", "entry": "< $43.80", "target": "$42–$41.50", "stop": "> $45",
+      "prediction_correct": null
+    },
+    {
+      "stock": "SPCX", "price": 157.54, "change_pct": -8.58, "expiry": "2026-07-10",
+      "bias": "Bearish", "pcr": 0.36, "call_wall": 180.0, "put_wall": 150.0, "hv20": null,
+      "play": "Put $156", "entry": "< $157", "target": "$152–$150", "stop": "> $162",
+      "prediction_correct": null
+    },
+    {
+      "stock": "TSM", "price": 444.23, "change_pct": -6.81, "expiry": "2026-07-10",
+      "bias": "Bearish", "pcr": 2.44, "call_wall": 502.5, "put_wall": 250.0, "hv20": 64.2,
+      "play": "Put $442", "entry": "< $443", "target": "$436–$433", "stop": "> $450",
+      "prediction_correct": null
+    },
+    {
+      "stock": "INTC", "price": 127.02, "change_pct": -8.88, "expiry": "2026-07-10",
+      "bias": "Bearish", "pcr": 0.84, "call_wall": 130.0, "put_wall": 130.0, "hv20": 100.0,
+      "play": "Put $126", "entry": "< $127", "target": "$122–$120", "stop": "> $131",
+      "prediction_correct": null
+    },
+    {
+      "stock": "RIVN", "price": 17.18, "change_pct": -0.93, "expiry": "2026-07-10",
+      "bias": "Neutral", "pcr": 0.37, "call_wall": 18.5, "put_wall": 16.0, "hv20": 81.1,
+      "play": "Call $17.50", "entry": "> $17.20", "target": "$18–$18.50", "stop": "< $16.50",
+      "prediction_correct": null
+    },
+    {
+      "stock": "DELL", "price": 425.25, "change_pct": -1.29, "expiry": "2026-07-10",
+      "bias": "Bullish", "pcr": 0.76, "call_wall": 500.0, "put_wall": 355.0, "hv20": 55.2,
+      "play": "Call $428", "entry": "> $426", "target": "$432–$435", "stop": "< $420",
+      "prediction_correct": null
+    },
+    {
+      "stock": "SOFI", "price": 18.44, "change_pct": 2.95, "expiry": "2026-07-10",
+      "bias": "Bullish", "pcr": 0.39, "call_wall": 19.0, "put_wall": 18.0, "hv20": 52.1,
+      "play": "Call $18.50", "entry": "> $18.45", "target": "$19–$19.50", "stop": "< $17.80",
+      "prediction_correct": null
+    },
+    {
+      "stock": "UAL", "price": 135.13, "change_pct": -0.71, "expiry": "2026-07-10",
+      "bias": "Bearish", "pcr": 1.37, "call_wall": 145.0, "put_wall": 130.0, "hv20": 53.9,
+      "play": "Put $134", "entry": "< $134.50", "target": "$131–$130", "stop": "> $137",
+      "prediction_correct": null
+    },
+    {
+      "stock": "AAL", "price": 18.15, "change_pct": 0.44, "expiry": "2026-07-10",
+      "bias": "Neutral", "pcr": 1.68, "call_wall": 18.5, "put_wall": 17.5, "hv20": 49.0,
+      "play": "Put $18", "entry": "< $18.10", "target": "$17.50–$17", "stop": "> $18.60",
+      "prediction_correct": null
+    }
+  ]
+}
