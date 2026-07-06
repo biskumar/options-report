@@ -2,6 +2,13 @@
   "description": "MarketWatch.com daily predictions log",
   "predictions": [
     {
+      "date": "2026-07-06",
+      "NASDAQ": "Bullish",
+      "DOW": "Bullish",
+      "NASDAQ_correct": null,
+      "DOW_correct": null
+    },
+    {
       "date": "2026-07-01",
       "NASDAQ": "Bearish",
       "DOW": "Bearish",
