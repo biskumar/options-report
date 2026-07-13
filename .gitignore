@@ -5,8 +5,13 @@
 .iv_cache.json
 .oi_cache.json
 
+# Environment / secrets
+.env
+
 # Personal data
 watchlist_*.csv
+us_watchlist_*.csv
+option_analyzer_logs/
 
 # Mac
 .DS_Store
@@ -23,3 +28,10 @@ __pycache__/
 azure-upload/
 batch-reg-react/
 batch-registration/
+
+# ibkr-options-app
+ibkr-options-app/backend/.env
+ibkr-options-app/frontend/.env
+ibkr-options-app/frontend/node_modules/
+ibkr-options-app/frontend/dist/
+ibkr-options-app/backend/.pytest_cache/

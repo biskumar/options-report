@@ -1,0 +1,37 @@
+{
+  "description": "Daily ticker predictions log (manually entered, ticker/date/Bullish-Bearish)",
+  "predictions": [
+    {
+      "date": "2026-07-01",
+      "ticker": "AAPL",
+      "prediction": "Bearish",
+      "Predicted": "No",
+      "Current Price": 289.36,
+      "End of Day Price": 294.38
+    },
+    {
+      "date": "2026-07-02",
+      "ticker": "MU",
+      "prediction": "Bullish",
+      "Predicted": "No",
+      "Current Price": null,
+      "End of Day Price": null
+    },
+    {
+      "date": "2026-07-02",
+      "ticker": "NFLX",
+      "prediction": "Bullish",
+      "Predicted": "No",
+      "Current Price": null,
+      "End of Day Price": null
+    },
+    {
+      "date": "2026-07-02",
+      "ticker": "AAPL",
+      "prediction": "Bearish",
+      "Predicted": "No",
+      "Current Price": null,
+      "End of Day Price": null
+    }
+  ]
+}

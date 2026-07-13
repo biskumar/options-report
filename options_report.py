@@ -13,6 +13,25 @@ import os
 import sys
 import webbrowser
 from datetime import date, datetime, timedelta
+from pathlib import Path
+
+
+def _load_dotenv() -> None:
+    env_path = Path(__file__).parent / ".env"
+    if not env_path.exists():
+        return
+    with env_path.open() as f:
+        for line in f:
+            line = line.strip()
+            if not line or line.startswith("#") or "=" not in line:
+                continue
+            key, _, val = line.partition("=")
+            key = key.strip(); val = val.strip().strip('"').strip("'")
+            if key and key not in os.environ:
+                os.environ[key] = val
+
+
+_load_dotenv()
 
 # FOMC decision dates 2026 (day of rate announcement)
 FOMC_DATES_2026 = [
@@ -228,130 +247,27 @@ def _bs_gamma(S: float, K: float, T: float, sigma: float, r: float = 0.05) -> fl
         return 0.0
 
 
+# ── Unusual Whales integration ─────────────────────────────────────────────
+# Full client in unusualwhales.py — get_uw_flow kept for backward compat.
+
 def get_uw_flow(ticker: str, expiry_str: Optional[str], api_key: str) -> dict:
-    """
-    Fetch recent options flow from Unusual Whales API.
-    Returns aggregated bull/bear premium, sweep count, and net flow signal.
-
-    API docs: https://unusualwhales.com/api-docs
-    Auth: Bearer token (--uw-key flag)
-    """
+    """Thin wrapper around UWClient.get_flow() for backward compatibility."""
     try:
-        import urllib.request
-        import urllib.error
-
-        url = f"https://api.unusualwhales.com/api/stock/{ticker.upper()}/flow"
-        req = urllib.request.Request(
-            url,
-            headers={
-                "Authorization": f"Bearer {api_key}",
-                "Accept": "application/json",
-            },
-        )
-        with urllib.request.urlopen(req, timeout=10) as resp:
-            data = json.loads(resp.read().decode())
-
-        # UW returns {"data": [...]} — each item is a flow alert
-        rows = data.get("data", [])
-        if not rows:
-            return {"error": "No flow data returned"}
-
-        # Filter to target expiry if specified
-        if expiry_str:
-            rows = [r for r in rows if r.get("expiry_date", "").startswith(expiry_str)]
-
-        bull_premium = 0.0   # call buys (ask side) + put sells (bid side)
-        bear_premium = 0.0   # put buys (ask side) + call sells (bid side)
-        sweep_bull   = 0
-        sweep_bear   = 0
-        unusual_bull = 0
-        unusual_bear = 0
-        total_rows   = 0
-        top_flows    = []
-
-        for r in rows:
-            opt_type  = (r.get("type") or r.get("option_type") or "").upper()   # CALL / PUT
-            side      = (r.get("side") or "").upper()                            # ASK=buy / BID=sell
-            premium   = float(r.get("premium") or r.get("total_premium") or 0)
-            is_sweep  = bool(r.get("is_sweep") or r.get("sweep"))
-            is_unu    = bool(r.get("is_unusual") or r.get("unusual"))
-            strike    = r.get("strike") or r.get("strike_price", "?")
-            expiry    = r.get("expiry_date") or r.get("expiry", "?")
-
-            # Determine directional bias
-            # Call-buy = bullish, Put-buy = bearish
-            # Call-sell = bearish hedge, Put-sell = bullish (selling protection)
-            is_bull = (opt_type == "CALL" and side == "ASK") or (opt_type == "PUT" and side == "BID")
-            is_bear = (opt_type == "PUT"  and side == "ASK") or (opt_type == "CALL" and side == "BID")
-
-            if is_bull:
-                bull_premium += premium
-                if is_sweep: sweep_bull += 1
-                if is_unu:   unusual_bull += 1
-            elif is_bear:
-                bear_premium += premium
-                if is_sweep: sweep_bear += 1
-                if is_unu:   unusual_bear += 1
-
-            total_rows += 1
-            if premium > 50_000 and total_rows <= 30:   # keep top big-money prints
-                top_flows.append({
-                    "type":    opt_type,
-                    "strike":  strike,
-                    "expiry":  expiry,
-                    "side":    "BUY" if side == "ASK" else "SELL",
-                    "premium": premium,
-                    "sweep":   is_sweep,
-                    "unusual": is_unu,
-                    "bull":    is_bull,
-                })
-
-        total_premium = bull_premium + bear_premium
-        if total_premium == 0:
-            return {"error": "Flow found but no premium data"}
-
-        bull_pct = round(bull_premium / total_premium * 100, 1)
-        bear_pct = round(bear_premium / total_premium * 100, 1)
-        net_pct  = round(bull_pct - bear_pct, 1)   # positive = net bullish
-
-        if net_pct >= 15:
-            signal = f"Strongly bullish flow (+{net_pct}% net call premium)"
-            cls    = "bull"
-        elif net_pct >= 5:
-            signal = f"Mildly bullish flow (+{net_pct}% net call premium)"
-            cls    = "bull"
-        elif net_pct <= -15:
-            signal = f"Strongly bearish flow ({net_pct}% net put premium)"
-            cls    = "bear"
-        elif net_pct <= -5:
-            signal = f"Mildly bearish flow ({net_pct}% net put premium)"
-            cls    = "bear"
-        else:
-            signal = f"Mixed/neutral flow ({net_pct:+.1f}% net)"
-            cls    = "neutral"
-
-        # Sort top flows by premium descending
-        top_flows.sort(key=lambda x: x["premium"], reverse=True)
-
-        return {
-            "bull_premium":  bull_premium,
-            "bear_premium":  bear_premium,
-            "bull_pct":      bull_pct,
-            "bear_pct":      bear_pct,
-            "net_pct":       net_pct,
-            "sweep_bull":    sweep_bull,
-            "sweep_bear":    sweep_bear,
-            "unusual_bull":  unusual_bull,
-            "unusual_bear":  unusual_bear,
-            "total_rows":    total_rows,
-            "signal":        signal,
-            "cls":           cls,
-            "top_flows":     top_flows[:10],
-        }
-
+        from unusualwhales import UWClient, UWError
+        client = UWClient(api_key)
+        return client.get_flow(ticker, expiry=expiry_str)
     except Exception as e:
         return {"error": str(e)}
 
+
+def get_uw_full(ticker: str, expiry_str: Optional[str], api_key: str) -> dict:
+    """Return full UW analysis: flow, flow_alerts, max_pain, iv_rank, gex."""
+    try:
+        from unusualwhales import UWClient, UWError
+        client = UWClient(api_key)
+        return client.get_full_analysis(ticker, expiry=expiry_str)
+    except Exception as e:
+        return {"error": str(e)}
 
 _BULL_WORDS = {"beat","beats","surge","surges","surged","jump","jumps","jumped","rally",
                "rallies","rallied","upgrade","upgrades","upgraded","buy","outperform",
@@ -4284,19 +4200,35 @@ def main():
             print(f"    💰 Position size: {position_size['max_contracts']} contracts "
                   f"(risk ${position_size['total_risk']:,.0f} = {args.risk}% of ${args.account:,.0f})")
 
-    # Unusual Whales options flow (requires API key)
+    # Unusual Whales — full analysis (flow + max pain + IV rank + GEX + alerts)
     uw_flow = {}
+    uw_full = {}
     if args.uw_key:
-        print(f"⏳  Fetching Unusual Whales options flow for {ticker}…")
-        uw_flow = get_uw_flow(ticker, chain["expiry_used"] if chain else None, args.uw_key)
-        if uw_flow.get("error"):
-            print(f"    ⚠  UW flow error: {uw_flow['error']}")
+        expiry_str = chain["expiry_used"] if chain else None
+        print(f"⏳  Fetching Unusual Whales data for {ticker}…")
+        uw_full = get_uw_full(ticker, expiry_str, args.uw_key)
+        if uw_full.get("error"):
+            print(f"    ⚠  UW error: {uw_full['error']}")
         else:
-            print(f"    🐋 UW flow: {uw_flow['signal']} "
-                  f"(bull {uw_flow['bull_pct']}% / bear {uw_flow['bear_pct']}%, "
-                  f"{uw_flow['sweep_bull']} bull sweeps, {uw_flow['sweep_bear']} bear sweeps)")
+            uw_flow = uw_full.get("flow", {})
+            _mp   = uw_full.get("max_pain", {})
+            _ivr  = uw_full.get("iv_rank", {})
+            _gex  = uw_full.get("gex", {})
+            _alts = uw_full.get("flow_alerts", []) or []
+            if not uw_flow.get("error"):
+                print(f"    🐋 Flow:     {uw_flow.get('signal','?')}  "
+                      f"(bull {uw_flow.get('bull_pct',0):.1f}% / bear {uw_flow.get('bear_pct',0):.1f}%, "
+                      f"sweeps B/B {uw_flow.get('sweep_bull',0)}/{uw_flow.get('sweep_bear',0)})")
+            if not _mp.get("error") and _mp.get("max_pain"):
+                print(f"    📌 Max Pain: ${_mp['max_pain']:.2f}")
+            if not _ivr.get("error") and _ivr.get("iv_rank"):
+                print(f"    📊 IV Rank:  {_ivr['iv_rank']:.1f}  ({_ivr.get('iv_label','')})")
+            if not _gex.get("error"):
+                print(f"    ⚡ GEX:      Net {_gex.get('net_gex',0):+.2f}  |  {_gex.get('regime','')}")
+            if _alts and not isinstance(_alts, dict):
+                print(f"    🚨 {len(_alts)} unusual flow alert(s) above $100K")
     else:
-        print(f"    ℹ  Unusual Whales flow skipped — add --uw-key YOUR_KEY (or UW_API_KEY env var)")
+        print(f"    ℹ  Unusual Whales skipped — add --uw-key YOUR_KEY (or UW_API_KEY env var)")
 
     print(f"⏳  Running analysis…")
     analysis = analyse(ticker, df, prior_close, pm_high, pm_low,
