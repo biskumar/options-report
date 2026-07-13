@@ -1,5 +1,12 @@
 fastapi>=0.116.1
-uvicorn[standard]>=0.35.0
+# Pinned, not >=: newer uvicorn/uvloop (observed 0.51.0/0.22.1) has a real
+# incompatibility with ib_insync's socket connection handling -- every
+# ib.connectAsync() fails with "RuntimeError: Task ... attached to a
+# different loop" even though the exact same code works fine standalone.
+# Root-caused by bisecting package versions; these are the last known-good
+# ones. Do not loosen without re-testing a live TWS connection.
+uvicorn[standard]==0.35.0
+uvloop==0.21.0
 ib_insync>=0.9.86
 pydantic-settings>=2.0.0
 websockets>=12.0
